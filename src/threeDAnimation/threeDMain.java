@@ -1,4 +1,4 @@
-package shapesAnimationTimer;
+package threeDAnimation;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class shapesAnimationMain extends Application {
+public class threeDMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("shapesAnimation.fxml"));
         Scene scene = new Scene(root);
 
-        stage.setTitle("2-D shapes Animation");
+        stage.setTitle("3-D shapes Animation");
         stage.setScene(scene);
         stage.show();
     }
