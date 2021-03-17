@@ -6,10 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class DynamicArtMain extends Application {
+public class dynamicArtMain extends Application {
         @Override
         public void start(Stage stage) throws Exception {
-            Parent root = FXMLLoader.load(getClass().getResource("DynamicArt.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("dynamicArt.fxml"));
 
             Scene scene = new Scene(root);
             stage.setTitle("Dynamic Art App");
