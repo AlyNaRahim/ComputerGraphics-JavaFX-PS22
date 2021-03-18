@@ -19,4 +19,4 @@ For VM options: --module-path ${PATH_TO_JAVAFX} --add-modules javafx.controls,ja
 
 <h3> App Screenshots </h3>
 
-![](img/artApp.JPG)
+![](artApp.JPG)
