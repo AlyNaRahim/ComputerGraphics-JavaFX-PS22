@@ -12,6 +12,7 @@ public class ArtMain extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Art.fxml"));
         Scene scene = new Scene(root);
+        primaryStage.setTitle("Paint App");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
