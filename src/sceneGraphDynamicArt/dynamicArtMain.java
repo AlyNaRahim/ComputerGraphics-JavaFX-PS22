@@ -52,17 +52,17 @@ public class dynamicArtMain extends Application {
         }
 
 
-        stage.setTitle("JavaFX Scene Graph Demo");
+        stage.setTitle("2-D shape animation Scene Graph");
         stage.setScene(scene);
         stage.show();
     }
 
-    private void  moveCircles (Ellipse c, int i) {
-        c.setCenterX(c.getCenterX() + dx[i]);
-        c.setCenterY(c.getCenterY() + dy[i]);
+    private void  moveCircles (Ellipse ellipse, int i) {
+        ellipse.setCenterX(ellipse.getCenterX() + dx[i]);
+        ellipse.setCenterY(ellipse.getCenterY() + dy[i]);
 
-        if (c.getCenterX() + c.getRadiusX() > 600 || c.getCenterX() - c.getRadiusX() < 0) dx[i] = -dx[i];
-        if (c.getCenterY() + c.getRadiusY() > 600 || c.getCenterY() - c.getRadiusY() < 0) dy[i] = -dy[i];
+        if (ellipse.getCenterX() + ellipse.getRadiusX() > 600 || ellipse.getCenterX() - ellipse.getRadiusX() < 0) dx[i] = -dx[i];
+        if (ellipse.getCenterY() + ellipse.getRadiusY() > 600 || ellipse.getCenterY() - ellipse.getRadiusY() < 0) dy[i] = -dy[i];
     }
 
 
@@ -71,7 +71,7 @@ public class dynamicArtMain extends Application {
                 random.nextInt(256),
                 random.nextInt(256),
                 random.nextInt(256),
-                (double) random.nextInt(70) / 100);
+                (double) random.nextInt(50) / 100);
     }
 
     public static void main(String[] args) {
