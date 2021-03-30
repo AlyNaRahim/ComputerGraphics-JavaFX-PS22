@@ -124,8 +124,7 @@ public class digitalClockMain extends Application {
 
                 stage.setScene(clock);
 
-            }
-            ;
+            };
         });
 
         //TODO set alarm
