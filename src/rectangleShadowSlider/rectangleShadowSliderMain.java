@@ -1,38 +1,152 @@
 package rectangleShadowSlider;
 
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.*;
 
 public class rectangleShadowSliderMain extends Application {
     @Override
     public void start(Stage stage) {
 
-        stage.setTitle("Text drop shadow");
+        stage.setTitle("Rectangle slider drop shadow");
+
+        final int[] values = {5,3,3,0,0,0};
 
         VBox container = new VBox();
-        container.setStyle("-fx-background-color: black;" +
+        container.setStyle("-fx-background-color: white;" +
                 "-fx-spacing: 20; " +
                 "-fx-padding: 50,50,50,50; " +
                 "-fx-alignment: center");
 
-        Slider slider = new Slider();
+        Label heading = new Label("ADJUSTABLE RECTANGLE DROP SHADOW");
+        heading.setFont(new Font("Times New Roman", 18));
+
+        HBox sliderContainer = new HBox();
+        sliderContainer.setStyle("-fx-spacing: 8;" +
+                "-fx-alignment: center;" +
+                "-fx-pref-height: 70");
+
+        Label h2 = new Label("Radius");
+        h2.setFont(new Font("Times New Roman", 15));
+        h2.setRotate(270);
+        h2.setTranslateX(10);
+
+        Slider radius = new Slider();
+        radius.setOrientation(Orientation.VERTICAL);
+
+        Label h3 = new Label("Off Set");
+        h3.setFont(new Font("Times New Roman", 15));
+        h3.setRotate(270);
+        h3.setTranslateX(10);
+
+        Slider offSetX = new Slider();
+        offSetX.setOrientation(Orientation.VERTICAL);
+
+        Slider offSetY = new Slider();
+        offSetY.setOrientation(Orientation.VERTICAL);
+
+        Label h4 = new Label("RGB");
+        h4.setFont(new Font("Times New Roman", 15));
+        h4.setRotate(270);
+        h4.setTranslateX(10);
+
+        Slider red = new Slider();
+        red.setOrientation(Orientation.VERTICAL);
+
+        Slider green = new Slider();
+        green.setOrientation(Orientation.VERTICAL);
+
+        Slider blue = new Slider();
+        blue.setOrientation(Orientation.VERTICAL);
+
+        sliderContainer.getChildren().addAll(h2, radius, h3, offSetX,offSetY, h4, red, green, blue);
+
 
         Rectangle r = new Rectangle(150,75);
-        r.setStyle("-fx-effect: dropshadow(gaussian,white,5.0,0,3.0,3.0);" +
-                "-fx-fill: blueviolet");
-        //text.setEffect(new DropShadow(10, 5.0,5.0,Color.WHITE));
-        container.getChildren().addAll(r, slider);
+        r.setFill(Color.rgb(40,13,64));
+        r.setEffect(new DropShadow(5.0,3.0,3.0,Color.rgb(values[3],values[4],values[5])));
+
+        container.getChildren().addAll(heading, r, sliderContainer);
+
+        radius.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                        values[0] = newValue.intValue();
+                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
+                    }
+
+                }
+        );
+        offSetX.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                        values[1] = newValue.intValue();
+                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
+                    }
+
+                }
+        );
+
+        offSetY.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                        values[2] = newValue.intValue();
+                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
+                    }
+
+                }
+        );
+
+        red.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                        values[3] = newValue.intValue();
+                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
+                    }
+
+                }
+        );
+
+        green.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                        values[5] = newValue.intValue();
+                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
+                    }
+
+                }
+        );
+
+        blue.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+                        values[4] = newValue.intValue();
+                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
+                    }
+
+                }
+        );
+
 
         Scene scene = new Scene(container, 500, 500);
         stage.setScene(scene);
