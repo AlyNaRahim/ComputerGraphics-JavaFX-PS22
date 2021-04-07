@@ -1,17 +1,20 @@
-package textShadow;
-
+package rectangleShadowSlider;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.*;
 
-public class textShadowMain extends Application {
-
+public class rectangleShadowSliderMain extends Application {
     @Override
     public void start(Stage stage) {
 
@@ -23,13 +26,13 @@ public class textShadowMain extends Application {
                 "-fx-padding: 50,50,50,50; " +
                 "-fx-alignment: center");
 
+        Slider slider = new Slider();
 
-        Text text = new Text("JavaFX");
-        text.setFont(Font.font(null, FontWeight.BOLD, 70));
-        text.setStyle("-fx-effect: dropshadow(gaussian,white,5.0,0,3.0,3.0);" +
-                "-fx-fill: red");
+        Rectangle r = new Rectangle(150,75);
+        r.setStyle("-fx-effect: dropshadow(gaussian,white,5.0,0,3.0,3.0);" +
+                "-fx-fill: blueviolet");
         //text.setEffect(new DropShadow(10, 5.0,5.0,Color.WHITE));
-        container.getChildren().add(text);
+        container.getChildren().addAll(r, slider);
 
         Scene scene = new Scene(container, 500, 500);
         stage.setScene(scene);
@@ -40,3 +43,4 @@ public class textShadowMain extends Application {
         launch(args);
     }
 }
+

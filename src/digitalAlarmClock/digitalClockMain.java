@@ -29,10 +29,15 @@ public class digitalClockMain extends Application {
         stage.setTitle("Digital Alarm Clock");
 
         VBox clockContainer = new VBox();
-        clockContainer.setStyle("-fx-background-color: black");
-        clockContainer.setPadding(new Insets(50, 50, 50, 50));
-        clockContainer.setSpacing(20);
-        clockContainer.setAlignment(Pos.CENTER);
+        clockContainer.setStyle("-fx-background-color: black;" +
+                "-fx-spacing: 20; " +
+                "-fx-padding: 50,50,50,50; " +
+                "-fx-alignment: center");
+
+        //clockContainer.setStyle("-fx-background-color: black");
+        //clockContainer.setPadding(new Insets(50, 50, 50, 50));
+        //clockContainer.setSpacing(20);
+        //clockContainer.setAlignment(Pos.CENTER);
 
         Label label = new Label("00:00:00");
         label.setFont(new Font("Times New Roman", 50));
@@ -41,8 +46,9 @@ public class digitalClockMain extends Application {
         //set Alarm button
         Button setAlarm = new Button("Set Alarm");
         setAlarm.setFont(new Font("Times New Roman", 15));
-        setAlarm.setPrefSize(165, 20);
-        setAlarm.setAlignment(Pos.CENTER);
+        setAlarm.setStyle("-fx-pref-height: 20;" +
+                "-fx-pref-width: 165;" +
+                "-fx-alignment: center");
         clockContainer.getChildren().addAll(label, setAlarm);
 
         // Animating the clock by 1 second
@@ -62,15 +68,19 @@ public class digitalClockMain extends Application {
         timeline.play();
 
         VBox alarmContainer = new VBox();
-        alarmContainer.setStyle("-fx-background-color: black");
-        alarmContainer.setPadding(new Insets(50, 50, 50, 50));
-        alarmContainer.setSpacing(20);
-        alarmContainer.setAlignment(Pos.CENTER);
+        alarmContainer.setStyle("-fx-background-color: black;" +
+                "-fx-spacing: 20; " +
+                "-fx-padding: 50,50,50,50; " +
+                "-fx-alignment: center");
 
         HBox valueContainer = new HBox();
-        valueContainer.setSpacing(8);
-        valueContainer.setAlignment(Pos.CENTER);
-        valueContainer.setPrefHeight(30);
+        valueContainer.setStyle("-fx-spacing: 8;" +
+                "-fx-alignment: center;" +
+                "-fx-pref-height: 30");
+
+        //valueContainer.setSpacing(8);
+        //valueContainer.setAlignment(Pos.CENTER);
+        //valueContainer.setPrefHeight(30);
 
         ComboBox hourComboBox = new ComboBox();
         hourComboBox.setMaxHeight(30);
@@ -84,7 +94,7 @@ public class digitalClockMain extends Application {
         colon.setStyle("-fx-text-fill: white");
 
         ComboBox minuteComboBox = new ComboBox();
-        minuteComboBox.setMaxHeight(30);
+        minuteComboBox.setStyle("-fx-max-height: 30");
         minuteComboBox.getItems().addAll
                 (
                         "00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
@@ -98,8 +108,9 @@ public class digitalClockMain extends Application {
 
         Button done = new Button("Done");
         done.setFont(new Font("Times New Roman", 15));
-        done.setPrefSize(156, 20);
-        done.setAlignment(Pos.CENTER);
+        done.setStyle("-fx-pref-height: 20;" +
+                "-fx-pref-width: 156;" +
+                "-fx-alignment: center");
 
         alarmContainer.getChildren().addAll(valueContainer, done);
 
@@ -128,6 +139,7 @@ public class digitalClockMain extends Application {
         });
 
         //TODO set alarm
+        //https://github.com/EvansDaniel/Alarm-Clock/blob/master/AlarmClock.java
 
         stage.setScene(clock);
         stage.show();
