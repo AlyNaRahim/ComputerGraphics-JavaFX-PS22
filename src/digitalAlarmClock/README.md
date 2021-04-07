@@ -1,8 +1,8 @@
-<h2> Text Shadow in the Scene Graph </h2>
+<h2> Digital Clock App with the Scene Graph and Timeline Animation </h2>
 
 <h3> Description </h3>
 
-Display a Label containing the phrase "JavaFX" and apply a drop shadow to the text.
+Create an app that displays a digital clock on the screen in a Label. Include alarm-clock functionality. Use a Timeline animation that executes once per second.
 
 <h3> Software </h3>
 <h4>JavaFX SDK 11.0.2 -  https://openjfx.io/ <br>
@@ -13,5 +13,6 @@ For VM options: --module-path ${PATH_TO_JAVAFX} --add-modules javafx.controls,ja
 
 <h3> App Screenshots </h3>
 
-![](text1.JPG)
-
+![](clock1.JPG)
+#
+![](clock2.JPG)
