@@ -32,7 +32,8 @@ public class textShadowMain extends Application {
         Text text = new Text("JavaFX");
         text.setFill(Paint.valueOf("Red"));
         text.setFont(Font.font(null, FontWeight.BOLD, 70));
-        text.setEffect(new DropShadow(10, 5.0,5.0,Color.WHITE));
+        text.setStyle("-fx-effect: dropshadow(gaussian,white,5.0,0,3.0,3.0)");
+        //text.setEffect(new DropShadow(10, 5.0,5.0,Color.WHITE));
         container.getChildren().add(text);
 
         Scene scene = new Scene(container, 500, 500);
