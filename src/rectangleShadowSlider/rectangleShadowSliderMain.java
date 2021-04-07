@@ -38,16 +38,14 @@ public class rectangleShadowSliderMain extends Application {
 
         Label h2 = new Label("Radius");
         h2.setFont(new Font("Times New Roman", 15));
-        h2.setRotate(270);
-        h2.setTranslateX(10);
+        h2.setStyle("-fx-rotate: 270; -fx-translate-x: 10");
 
         Slider radius = new Slider();
         radius.setOrientation(Orientation.VERTICAL);
 
         Label h3 = new Label("Off Set");
         h3.setFont(new Font("Times New Roman", 15));
-        h3.setRotate(270);
-        h3.setTranslateX(10);
+        h3.setStyle("-fx-rotate: 270; -fx-translate-x: 10");
 
         Slider offSetX = new Slider();
         offSetX.setOrientation(Orientation.VERTICAL);
@@ -57,8 +55,7 @@ public class rectangleShadowSliderMain extends Application {
 
         Label h4 = new Label("RGB");
         h4.setFont(new Font("Times New Roman", 15));
-        h4.setRotate(270);
-        h4.setTranslateX(10);
+        h4.setStyle("-fx-rotate: 270; -fx-translate-x: 10");
 
         Slider red = new Slider();
         red.setOrientation(Orientation.VERTICAL);
