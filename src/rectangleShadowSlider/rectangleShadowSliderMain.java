@@ -1,11 +1,7 @@
 package rectangleShadowSlider;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -83,67 +79,43 @@ public class rectangleShadowSliderMain extends Application {
         container.getChildren().addAll(heading, r, sliderContainer);
 
         radius.valueProperty().addListener(
-                new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-                        values[0] = newValue.intValue();
-                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
-                    }
-
+                (ov, oldValue, newValue) -> {
+                    values[0] = newValue.intValue();
+                    r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
                 }
         );
         offSetX.valueProperty().addListener(
-                new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-                        values[1] = newValue.intValue();
-                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
-                    }
-
+                (ov, oldValue, newValue) -> {
+                    values[1] = newValue.intValue();
+                    r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
                 }
         );
 
         offSetY.valueProperty().addListener(
-                new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-                        values[2] = newValue.intValue();
-                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
-                    }
-
+                (ov, oldValue, newValue) -> {
+                    values[2] = newValue.intValue();
+                    r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
                 }
         );
 
         red.valueProperty().addListener(
-                new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-                        values[3] = newValue.intValue();
-                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
-                    }
-
+                (ov, oldValue, newValue) -> {
+                    values[3] = newValue.intValue();
+                    r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
                 }
         );
 
         green.valueProperty().addListener(
-                new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-                        values[5] = newValue.intValue();
-                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
-                    }
-
+                (ov, oldValue, newValue) -> {
+                    values[5] = newValue.intValue();
+                    r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
                 }
         );
 
         blue.valueProperty().addListener(
-                new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-                        values[4] = newValue.intValue();
-                        r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
-                    }
-
+                (ov, oldValue, newValue) -> {
+                    values[4] = newValue.intValue();
+                    r.setEffect(new DropShadow(values[0],values[1],values[2], Color.rgb(values[3],values[4],values[5])));
                 }
         );
 
