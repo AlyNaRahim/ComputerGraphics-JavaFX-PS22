@@ -2,7 +2,7 @@
 
 <h3> Description </h3>
 
-CreateDisplay a Label containing the phrase "JavaFX" and apply a drop shadow to the text.
+Display a Label containing the phrase "JavaFX" and apply a drop shadow to the text.
 
 <h3> Software </h3>
 <h4>JavaFX SDK 11.0.2 -  https://openjfx.io/ <br>
