@@ -16,12 +16,16 @@ import javafx.util.Duration;
 
 import javax.swing.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class digitalClockMain extends Application {
     int hour, minute, second;
     private Timer newTimer;
     String timeString;
+    private List<String> alarms = new ArrayList<>();
+
 
 
     @Override public void start(Stage stage) {
@@ -48,7 +52,6 @@ public class digitalClockMain extends Application {
         setAlarm.setStyle("-fx-pref-height: 20; -fx-pref-width: 165; -fx-alignment: center");
 
         clockContainer.getChildren().addAll(label, setAlarm);
-
         // Animating the clock by 1 second
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0),
@@ -115,7 +118,6 @@ public class digitalClockMain extends Application {
             stage.setScene(alarm);
         });
 
-
         done.setOnAction(event -> {
             if (hourComboBox.getValue() != null || minuteComboBox.getValue() != null) {
                 System.out.printf("Alarm is set for ");
@@ -128,6 +130,8 @@ public class digitalClockMain extends Application {
                 minute = (int) minuteComboBox.getValue();
                 int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
                 int currentMin = Calendar.getInstance().get(Calendar.MINUTE);
+                System.out.println(minute);
+                System.out.println(currentMin);
 
 
                 newTimer = new Timer(1000, h -> {

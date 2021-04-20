@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dynamicArtApp.dynamicController">
+    <children>
+        <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onClickExit" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit" />
+            </menus>
+        </MenuBar>
+        <BorderPane layoutY="27.0" prefHeight="549.0" prefWidth="600.0">
+            <left>
+                <ToolBar orientation="VERTICAL" prefHeight="493.0" prefWidth="153.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <TitledPane animated="false" prefHeight="113.0" prefWidth="91.0" text="Shapes">
+                            <content>
+                                <VBox prefHeight="87.0" prefWidth="119.0" spacing="8.0">
+                                    <children>
+                                        <RadioButton fx:id="ovalRadioButton" mnemonicParsing="false" text="Oval">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="T1" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton fx:id="rectangleRadioButton" mnemonicParsing="false" text="Rectange" toggleGroup="$T1" />
+                                        <RadioButton fx:id="lineRadioButton" mnemonicParsing="false" text="Line" toggleGroup="$T1" />
+                                        <RadioButton fx:id="eraserRadioButton" mnemonicParsing="false" text="Eraser" toggleGroup="$T1" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="102.0" prefWidth="143.0" text="Eraser/ Pen size">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="43.0" prefWidth="141.0">
+                                    <children>
+                                        <VBox layoutX="8.0" layoutY="3.0" prefHeight="36.0" prefWidth="120.0">
+                                            <children>
+                                                <Slider fx:id="eraserSlider" prefHeight="30.0" prefWidth="120.0">
+                                                    <padding>
+                                                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                                    </padding>
+                                                </Slider>
+                                                <TextField fx:id="penEraserSizeTextField" prefHeight="25.0" prefWidth="94.0" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="88.0" prefWidth="70.0" text="Color Properties">
+                            <content>
+                                <VBox prefHeight="43.0" prefWidth="188.0" spacing="8.0">
+                                    <children>
+                                        <RadioButton fx:id="strokeRadioButton" mnemonicParsing="false" text="Stroke">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="T2" />
+                                            </toggleGroup></RadioButton>
+                                        <RadioButton fx:id="fillRadioButton" mnemonicParsing="false" text="Fill" toggleGroup="$T2" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="126.0" prefWidth="143.0" text="Color (RGB)">
+                            <content>
+                                <HBox prefHeight="76.0" prefWidth="141.0" spacing="8.0">
+                                    <children>
+                                        <Slider fx:id="redSlider" orientation="VERTICAL" />
+                                        <Slider fx:id="greenSlider" orientation="VERTICAL" />
+                                        <Slider fx:id="blueSlider" orientation="VERTICAL" />
+                                        <Rectangle fx:id="colorShow" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0">
+                                            <HBox.margin>
+                                                <Insets top="20.0" />
+                                            </HBox.margin>
+                                        </Rectangle>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </TitledPane>
+                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#onClickUndo" text="Undo" />
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#onClickClear" text="Clear" />
+                    </items>
+                </ToolBar>
+            </left>
+            <center>
+                <Canvas fx:id="canvasArea" height="487.0" width="433.0" BorderPane.alignment="CENTER" />
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

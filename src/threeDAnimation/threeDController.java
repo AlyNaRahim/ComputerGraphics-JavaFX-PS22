@@ -1,70 +1,68 @@
 package threeDAnimation;
 
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point3D;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.util.Duration;
 
 import java.security.SecureRandom;
 
-
 public class threeDController {
-    @FXML Pane pane;
+    @FXML private Sphere sphere;
+    @FXML private Pane pane;
+    private int counter = 0;
 
-    private SecureRandom random = new SecureRandom();
-
-    private int num;
-    private int[] dx;
-    private int[] dy;
-
+    // set the material for each 3D shape
     public void initialize() {
-        num = random.nextInt(50) + 12;
+        SecureRandom random = new SecureRandom();
 
-        dx = new int[num];
-        dy = new int[num];
-
-        for (int i = 0; i < num; i++) {
-            Sphere sphere = new Sphere();
-            sphere.setTranslateX(random.nextInt(300) + 150);
-            sphere.setTranslateY(random.nextInt(200) + 150);
-            sphere.setRadius(random.nextInt(100));
-
-
-            pane.getChildren().add(sphere);
-            dx[i] = 1 + random.nextInt(5);
-            dy[i] = 1 + random.nextInt(5);
-        }
         Timeline timelineAnimation = new Timeline(
-                new KeyFrame(Duration.millis(10), event -> moveCircles())
+                new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        int randShape = random.nextInt(3);
+                        double randWidth = random.nextDouble() * 100;
+                        double randHeight = random.nextDouble() * 100;
+                        double randDepth = random.nextDouble() * 100;
+
+                        Bounds bounds = pane.getBoundsInLocal();
+
+                        double randX = randWidth + random.nextInt((int) bounds.getWidth()/2);
+                        double randY = randHeight + random.nextInt((int)(bounds.getHeight() / 2));
+                        double randZ = randDepth + random.nextInt((int) (400 - randDepth));
+
+                        double randRotate = random.nextDouble() * 360;
+
+                        PhongMaterial phongMaterial = new PhongMaterial();
+                        phongMaterial.setDiffuseColor(
+                                Color.rgb(
+                                        random.nextInt(256),
+                                        random.nextInt(256),
+                                        random.nextInt(256),
+                                        (double) random.nextInt(70) / 100));
+                                //new Color(random.nextDouble(), random.nextDouble(), random.nextDouble(),1));
+                        MyCylinder cylinder = new MyCylinder(randWidth, randHeight);
+                        cylinder.setTranslateX(randX);
+                        cylinder.setTranslateY(randY);
+                        cylinder.setTranslateZ(randZ);
+                        cylinder.setRotationAxis(new Point3D(1,1,1));
+                        cylinder.setRotate(randRotate);
+                        cylinder.setMaterial(phongMaterial);
+                        pane.getChildren().add(cylinder);
+                        cylinder.animate(pane);
+                    }
+                })
         );
-        timelineAnimation.setCycleCount(Timeline.INDEFINITE);
+
+        timelineAnimation.setCycleCount(25);
         timelineAnimation.play();
     }
-
-    private void moveCircles() {
-        for (int i = 0; i < pane.getChildren().size(); i++) {
-            Sphere sphere = (Sphere) pane.getChildren().get(i);
-            sphere.setTranslateX(sphere.getLayoutX() + dx[i]);
-            sphere.setTranslateY(sphere.getLayoutY() + dy[i]);
-            if (sphere.getTranslateX() + sphere.getRadius() > pane.getWidth() || sphere.getTranslateX() - sphere.getRadius() < 0) dx[i] = -dx[i];
-            if (sphere.getTranslateY() + sphere.getRadius() > pane.getHeight() || sphere.getTranslateY() - sphere.getRadius() < 0) dy[i] = -dy[i];
-        }
-    }
-
-
-    private Color randomColor(){
-        return Color.rgb(
-                random.nextInt(256),
-                random.nextInt(256),
-                random.nextInt(256),
-                (double) random.nextInt(70) / 100);
-    }
 }
-
