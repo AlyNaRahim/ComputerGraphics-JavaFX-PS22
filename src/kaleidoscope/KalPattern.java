@@ -16,7 +16,7 @@ import java.security.SecureRandom;
 
 
 public class KalPattern extends Application {
-    private SecureRandom random = new SecureRandom();
+    private final SecureRandom random = new SecureRandom();
 
 
     @Override
@@ -90,24 +90,24 @@ public class KalPattern extends Application {
         return polygon2;
     }
 
-    private Transition RotateTransition(Polygon polygon, double angle){
+    private void RotateTransition(Polygon polygon, double angle){
         Duration duration = Duration.seconds(6);
         RotateTransition rotateTransition = new RotateTransition(duration, polygon);
         rotateTransition.setByAngle(angle);
         rotateTransition.setAutoReverse(true);
         rotateTransition.setCycleCount(Animation.INDEFINITE);
         rotateTransition.play();
-        return rotateTransition;
+        //return rotateTransition;
     }
 
-    private Transition ScaleTransition (Shape polygon, double setX, double setY){
+    private void ScaleTransition (Shape polygon, double setX, double setY){
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(1),polygon);
         scaleTransition.setByX(setX);
         scaleTransition.setByY(setY);
         scaleTransition.setAutoReverse(true);
         scaleTransition.setCycleCount(Animation.INDEFINITE);
         scaleTransition.play();
-        return scaleTransition;
+        //return scaleTransition;
     }
 
     public static void main(String[] args) {
