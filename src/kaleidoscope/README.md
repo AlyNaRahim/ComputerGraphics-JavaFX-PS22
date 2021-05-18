@@ -16,4 +16,4 @@ https://www.genuinecoder.com/javafx-animation-tutorial/
 
 <h3> App Screenshots </h3>
 
-![](kal.GIF)
+![](kal.gif)
