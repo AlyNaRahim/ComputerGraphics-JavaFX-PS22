@@ -139,15 +139,18 @@ public class dynamicController {
                 rectangle.setY(Math.min(rectangle.getY(), mouseEvent.getY()));
                 if (fillRadioButton.isSelected() == true) {
                     rectangle.setFill(Color.rgb(red, green, blue));
+                    graphicsContext.setFill(Color.rgb(red, green, blue));
+                    graphicsContext.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
                 } else {
-                    rectangle.setFill(Color.rgb(225, 225, 225));
+                    rectangle.setFill(Color.WHITE);
                     rectangle.setStroke(Color.rgb(red, green, blue));
                 }
-                graphicsContext.setFill(Color.rgb(red, green, blue));
-                graphicsContext.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
+                //graphicsContext.setFill(Color.rgb(red, green, blue));
+                //graphicsContext.fillRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
                 graphicsContext.strokeRect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
                 Rectangle tempRect = new Rectangle(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
-                tempRect.setFill(Color.rgb(red, green, blue));
+                tempRect.setStrokeWidth(line.getStrokeWidth());
+                //tempRect.setFill(Color.rgb(red, green, blue));
                 drawingHistory.push(tempRect);
 
             } else if (ovalRadioButton.isSelected()) {
@@ -157,15 +160,18 @@ public class dynamicController {
                 oval.setCenterY(Math.min(oval.getCenterY(), mouseEvent.getY()));
                 if (fillRadioButton.isSelected()) {
                     oval.setFill(Color.rgb(red, green, blue));
+                    graphicsContext.setFill(Color.rgb(red, green, blue));
+                    graphicsContext.fillOval(oval.getCenterX(), oval.getCenterY(), oval.getRadiusX(), oval.getRadiusY());
                 } else {
                     oval.setFill(Color.rgb(225, 225, 225));
                     oval.setStroke(Color.rgb(red, green, blue));
                 }
-                graphicsContext.setFill(Color.rgb(red, green, blue));
-                graphicsContext.fillOval(oval.getCenterX(), oval.getCenterY(), oval.getRadiusX(), oval.getRadiusY());
+                //graphicsContext.setFill(Color.rgb(red, green, blue));
+                //graphicsContext.fillOval(oval.getCenterX(), oval.getCenterY(), oval.getRadiusX(), oval.getRadiusY());
                 graphicsContext.strokeOval(oval.getCenterX(), oval.getCenterY(), oval.getRadiusX(), oval.getRadiusY());
                 Ellipse tempOval = new Ellipse(oval.getCenterX(), oval.getCenterY(), oval.getRadiusX(), oval.getRadiusY());
-                tempOval.setFill(Color.rgb(red, green, blue));
+                tempOval.setStrokeWidth(line.getStrokeWidth());
+                //tempOval.setFill(Color.rgb(red, green, blue));
                 drawingHistory.push(tempOval);
             } else if (eraserRadioButton.isSelected()) eraseFunction(mouseEvent.getX(), mouseEvent.getY());
 
